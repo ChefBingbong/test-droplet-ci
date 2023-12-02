@@ -3,7 +3,7 @@ name: Deploy to DigitalOcean
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -23,6 +23,6 @@ jobs:
 
       - name: Deploy to DigitalOcean
         run: |
-          sshpass -p eMcg45245!a ssh -o StrictHostKeyChecking=no root@138.68.181.69 'cd /root/test-droplet-ci && git pull && npm install && pm2 reload app'
+          sshpass -p 'your-droplet-password' ssh -o StrictHostKeyChecking=no your-droplet-username@your-droplet-ip 'cd /path/to/your/app && git pull && npm install && pm2 reload your-app-name'
         env:
           DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
